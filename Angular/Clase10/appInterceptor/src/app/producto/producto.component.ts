@@ -22,6 +22,7 @@ export class ProductoComponent implements OnInit {
 		this.producto.listar()
 			.subscribe((resp: any) => {
 				this.lista = resp.results
+				this.lista.reverse()
 			},
 				error => console.log(error))
 	}
@@ -36,6 +37,10 @@ export class ProductoComponent implements OnInit {
 				.subscribe(resp => {
 					this.listar()
 				})
+	}
+
+	nuevo() {
+		this.router.navigate(["/producto", "nuevo"])
 	}
 
 }
