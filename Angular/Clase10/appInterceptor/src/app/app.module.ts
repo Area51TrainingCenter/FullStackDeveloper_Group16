@@ -16,13 +16,21 @@ import { AutorizationGuard } from './seguridad/autorizacion.guard';
 import { HttpClientModule } from "@angular/common/http";
 import { RegistroComponent } from './registro/registro.component'
 import { ReactiveFormsModule } from "@angular/forms";
-import { ProductoComponent } from './producto/producto.component'
+import { ProductoComponent } from './producto/producto.component';
+import { EdicionComponent } from './producto/edicion/edicion.component';
+import { NuevoComponent } from './producto/nuevo/nuevo.component'
 
 const routes: Routes = [
 	{ path: "", component: LoginComponent },
 	{ path: "registro", component: RegistroComponent },
 	{ path: "homeweb", component: HomeComponent, canActivate: [AutenticacionGuard] },
-	{ path: "producto", component: ProductoComponent },
+	{
+		path: "producto", children: [
+			{ path: "", component: ProductoComponent },
+			{ path: "edicion/:_id", component: EdicionComponent },
+			{ path: "nuevo", component: NuevoComponent }
+		]
+	},
 	{
 		path: "usuario", component: UsuarioListadoComponent, canActivate: [AutenticacionGuard], children: [
 			{ path: "edicion/:id", canActivate: [AutorizationGuard], component: UsuarioEdicionComponent },
@@ -46,7 +54,9 @@ const routes: Routes = [
 		UsuarioEdicionComponent,
 		UsuarioNuevoComponent,
 		RegistroComponent,
-		ProductoComponent
+		ProductoComponent,
+		EdicionComponent,
+		NuevoComponent
 	],
 	imports: [
 		BrowserModule,

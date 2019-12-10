@@ -12,7 +12,8 @@
 				<td>{{item.nombre}}</td>
 				<td>{{item.descripcion}}</td>
 				<td>
-					<button class="btn btn-primary" (click)="modificar(item._id)">Modificar</button>
+					<button class="btn btn-primary" (click)="editar(item._id)">Editar</button>
+					<button class="btn btn-danger" (click)="eliminar()">Eliminar</button>
 				</td>
 			</tr>
 		</tbody>
