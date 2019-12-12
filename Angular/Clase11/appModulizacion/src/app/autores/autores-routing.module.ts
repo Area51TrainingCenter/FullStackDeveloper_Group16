@@ -5,17 +5,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: "autores", children: [
-      { path: "listado", component: AutoresListadoComponent },
-      { path: "edicion", component: AutoresEdicionComponent },
-      { path: "nuevo", component: AutoresNuevoComponent }
-    ]
-  }
+  { path: "listado", component: AutoresListadoComponent },
+  { path: "edicion", component: AutoresEdicionComponent },
+  { path: "nuevo", component: AutoresNuevoComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AutoresRoutingModule { }

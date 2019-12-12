@@ -5,17 +5,13 @@ import { EditorialesEdicionComponent } from './editoriales-edicion/editoriales-e
 import { EditorialesNuevoComponent } from './editoriales-nuevo/editoriales-nuevo.component';
 
 const routes: Routes = [
-  {
-    path: "editoriales", children: [
-      { path: "listado", component: EditorialesListadoComponent },
-      { path: "edicion", component: EditorialesEdicionComponent },
-      { path: "nuevo", component: EditorialesNuevoComponent }
-    ]
-  }
+  { path: "listado", component: EditorialesListadoComponent },
+  { path: "edicion", component: EditorialesEdicionComponent },
+  { path: "nuevo", component: EditorialesNuevoComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class EditorialesRoutingModule { }
