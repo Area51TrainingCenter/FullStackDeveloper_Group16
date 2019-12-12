@@ -5,6 +5,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [LoginComponent, MenuComponent, RegistroComponent, HomeComponent]
+  declarations: [LoginComponent, MenuComponent, RegistroComponent, HomeComponent],
+  exports: [MenuComponent]
 })
 export class NucleoModule { }
