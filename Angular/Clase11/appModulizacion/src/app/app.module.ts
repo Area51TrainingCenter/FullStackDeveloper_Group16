@@ -19,10 +19,7 @@ import { EditorialesModule } from './editoriales/editoriales.module';
   imports: [
     BrowserModule,
     AppRouting,
-    NucleoModule,
-    LibrosModule,
-    AutoresModule,
-    EditorialesModule
+    NucleoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

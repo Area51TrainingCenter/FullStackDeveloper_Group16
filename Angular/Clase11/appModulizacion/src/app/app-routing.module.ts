@@ -9,7 +9,12 @@ import { HomeComponent } from './nucleo/home/home.component';
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
-  { path: "home", component: HomeComponent }
+  { path: "home", component: HomeComponent },
+  {
+    path: "libros", loadChildren: () => import("./libros/libros.module").then(mod => mod.LibrosModule)
+
+  }
+  /*   { path: "libros", loadChildren: "./libros/libros.module#LibrosModule" } */
 ]
 
 @NgModule({
