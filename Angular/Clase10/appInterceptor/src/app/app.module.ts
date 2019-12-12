@@ -13,12 +13,13 @@ import { UsuarioEdicionComponent } from './usuario-edicion/usuario-edicion.compo
 import { UsuarioNuevoComponent } from './usuario-nuevo/usuario-nuevo.component'
 import { AutenticacionGuard } from './seguridad/autenticacion.guard';
 import { AutorizationGuard } from './seguridad/autorizacion.guard';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RegistroComponent } from './registro/registro.component'
 import { ReactiveFormsModule } from "@angular/forms";
 import { ProductoComponent } from './producto/producto.component';
 import { EdicionComponent } from './producto/edicion/edicion.component';
 import { NuevoComponent } from './producto/nuevo/nuevo.component'
+import { AppInterceptor } from './servicios/app.interceptor';
 
 const routes: Routes = [
 	{ path: "", component: LoginComponent },
@@ -64,7 +65,9 @@ const routes: Routes = [
 		HttpClientModule,
 		ReactiveFormsModule
 	],
-	providers: [AutenticacionGuard, AutorizationGuard],
+	providers: [AutenticacionGuard, AutorizationGuard, {
+		provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true
+	}],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
