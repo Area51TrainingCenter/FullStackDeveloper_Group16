@@ -1,3 +1,9 @@
+<input type="text" placeholder="Texto a buscar" [(ngModel)]="textoABuscar">
+<select name="campo" [(ngModel)]="seleccion" (change)="seleccion = $event.target.value">
+  <option value="titulo">Título</option>
+  <option value="autor">Autor</option>
+  <option value="sinopsis">Sinópsis</option>
+</select>
 <table>
   <tr>
     <th>Título</th>
@@ -5,11 +11,11 @@
     <th>Anno</th>
     <th>Sinopsis</th>
   </tr>
-  <tr *ngFor="let novela of novelas">
+  <tr *ngFor="let novela of novelas | buscador:textoABuscar:seleccion">
     <td>{{novela.titulo | letrasCapitales}}</td>
     <td>{{novela.autor}}</td>
     <td>{{novela.anno}}</td>
-    <td>{{novela.sinopsis | reducidorCaracteres}}</td>
+    <td>{{novela.sinopsis | reducidorPalabras:10}}</td>
   </tr>
 </table>
 

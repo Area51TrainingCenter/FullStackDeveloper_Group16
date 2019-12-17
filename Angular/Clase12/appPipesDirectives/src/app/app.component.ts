@@ -13,6 +13,7 @@ export class AppComponent {
   tituloCurso: Observable<string>
   precio: number = 890.987
   matricula: number = 89.4
+  seleccion: string = "sinopsis"
 
   novelas = [
     { titulo: "El Perfume", autor: "Patrick Suskind", anno: 1995, sinopsis: "Narra la historia de un asesino que mata mujeres para robarles su esencia y crear un perfume que domine al mundo." },
@@ -20,6 +21,8 @@ export class AppComponent {
     { titulo: "Pantaleón y las visitadoras", autor: "Mario Vargas Llosa", anno: 1965, sinopsis: "Cuenta la historia de un comandante del Ejército al que le encomendaron la tarea de gestionar un prostíbulo para el Ejército" },
     { titulo: "Antígona", autor: "Hesidoto", anno: 100, sinopsis: "Recopilación de las narraciones de la mitología griega" }
   ]
+
+  textoABuscar: string = ""
 
 
   ngOnInit() {

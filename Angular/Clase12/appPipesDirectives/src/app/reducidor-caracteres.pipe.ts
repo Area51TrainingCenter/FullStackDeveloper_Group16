@@ -5,8 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ReducidorCaracteresPipe implements PipeTransform {
 
-  transform(value: string): string {
-    return value.substring(0, 20)
+  transform(value: string, limiteCaracteres: number, textoFinal: string = "... ver más"): string {
+    if (value.length > limiteCaracteres) return value.substring(0, limiteCaracteres) + " " + textoFinal
+
+    return value
   }
 
 }
