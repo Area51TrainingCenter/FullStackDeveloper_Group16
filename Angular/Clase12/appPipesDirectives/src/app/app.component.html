@@ -1,0 +1,62 @@
+<table>
+  <tr>
+    <th>Título</th>
+    <th>Autor</th>
+    <th>Anno</th>
+    <th>Sinopsis</th>
+  </tr>
+  <tr *ngFor="let novela of novelas">
+    <td>{{novela.titulo | letrasCapitales}}</td>
+    <td>{{novela.autor}}</td>
+    <td>{{novela.anno}}</td>
+    <td>{{novela.sinopsis | reducidorCaracteres}}</td>
+  </tr>
+</table>
+
+<h1>
+  {{tituloCurso | async | pasarAMayusculas}}
+</h1>
+
+<h1>
+  {{fecha | date:"MMMM, dd of yyyy":"+0500":"es-PE"}}
+</h1>
+
+<h1>
+  {{fecha | date:"shortDate"}}
+</h1>
+<h1>
+  {{fecha | date:"longDate"}}
+</h1>
+<h1>
+  {{fecha | date:"shortTime"}}
+</h1>
+<h1>
+  {{fecha | date:"longTime"}}
+</h1>
+<h1>
+  {{fecha | date:"dd/MM/yy"}}
+</h1>
+<h1>
+  {{fecha | date:"dd/MMM/yy"}}
+</h1>
+
+<h1>
+  {{fecha | date:"MMMM dd, yyyy"}}
+</h1>
+<h1>
+  {{fecha | date:"MMMM, dd of yyyy. HH:mm:ss"}}
+</h1>
+
+<h1>
+  {{fecha | date:"MMMM, dd of yyyy. HH:mm:ss" | lowercase}}
+</h1>
+
+<h1>
+  Título del curso: {{tituloCurso | async}}
+</h1>
+<h1>
+  Precio: {{precio | currency:"PEN ":"symbol":"3.2-2"}}
+</h1>
+<h1>
+  Matrícula: {{matricula | currency:"PEN ":"symbol":"3.2-2":"es-PE"}}
+</h1>
