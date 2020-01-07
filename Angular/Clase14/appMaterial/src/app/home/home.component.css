@@ -1,0 +1,11 @@
+.mat-table {
+  width: 100%
+}
+
+td:nth-child(3) {
+  text-align: right;
+}
+
+.mat-card-title, .mat-card-header-text {
+  width: 100%
+}
