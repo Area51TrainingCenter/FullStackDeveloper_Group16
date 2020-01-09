@@ -1,0 +1,41 @@
+<mat-sidenav-container>
+  <mat-sidenav #menu>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" (click)="menu.close()">Home</a>
+      <a mat-list-item routerLink="/cliente" (click)="menu.close()">Cliente</a>
+      <a mat-list-item routerLink="/login" (click)="logout();menu.close()">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" fxLayout fxLayoutAlign="space-between center" *ngIf="userLogged">
+      <div fxLayout fxLayoutAlign="start center">
+        <button mat-icon-button (click)="menu.open()" fxHide.gt-xs>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <h1>Sistema</h1>
+      </div>
+      <div fxHide.xs fxLayout>
+        <ul>
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/cliente">Cliente</a></li>
+        </ul>
+        <!--         <button mat-flat-button color="warn" (click)="logout()">
+          Logout
+          <mat-icon>lock</mat-icon>
+        </button> -->
+        <button mat-button [matMenuTriggerFor]="menuContextual">
+          {{username}}
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #menuContextual="matMenu">
+          <button mat-menu-item (click)="logout()">
+            Logout
+            <mat-icon>lock</mat-icon>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

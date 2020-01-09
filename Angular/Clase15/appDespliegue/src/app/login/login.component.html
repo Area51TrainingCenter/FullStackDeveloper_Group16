@@ -1,0 +1,23 @@
+<div fxLayout fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="340px" class="mat-elevation-z20">
+    <mat-card-header fxLayout="column">
+      <h2>Login</h2>
+      <p>Ingrese sus credenciales para acceder al sistema</p>
+    </mat-card-header>
+    <mat-card-content>
+      <form fxLayout="column" [formGroup]="grupo">
+        <mat-form-field appearance="outline">
+          <mat-icon matPrefix>face</mat-icon>
+          <input type="text" placeholder="Correo" matInput name="correo" required formControlName="email">
+          <mat-error>El correo es requerido</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-icon matPrefix>lock</mat-icon>
+          <input type="password" placeholder="Contrasena" matInput name="password" required formControlName="password">
+          <mat-error>La contrasena es requerida</mat-error>
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="login()" [disabled]="grupo.invalid">Ingresar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

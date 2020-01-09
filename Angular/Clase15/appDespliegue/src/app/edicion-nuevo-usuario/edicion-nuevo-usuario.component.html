@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{accion | uppercase}}</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="grupo" fxLayout="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput name="name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input type="text" matInput name="correo" formControlName="email">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" (click)="grabar()">
+    <mat-icon>save</mat-icon>
+    Grabar
+  </button>
+  <button mat-dialog-close mat-button>Cerrar</button>
+</div>

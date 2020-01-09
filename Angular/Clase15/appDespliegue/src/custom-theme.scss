@@ -1,0 +1,47 @@
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$mat-verde: (
+    50 : #e5eae3,
+    100 : #becab8,
+    200 : #93a789,
+    300 : #68835a,
+    400 : #476936,
+    500 : #274e13,
+    600 : #234711,
+    700 : #1d3d0e,
+    800 : #17350b,
+    900 : #0e2506,
+    A100 : #7dff61,
+    A200 : #53ff2e,
+    A400 : #2cfa00,
+    A700 : #27e100,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$appMaterial-primary: mat-palette($mat-indigo);
+$appMaterial-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$appMaterial-warn: mat-palette($mat-red);
+
+$appMaterial-theme: mat-light-theme($appMaterial-primary, $appMaterial-accent, $appMaterial-warn);
+
+@include angular-material-theme($appMaterial-theme);
+
