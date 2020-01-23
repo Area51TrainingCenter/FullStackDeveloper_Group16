@@ -11,7 +11,7 @@ const begin = async () => {
 
 	try {
 		await initializeDatabase()
-		console.log("Connected to Mongo")
+		console.log("Conectado a MongoDB")
 	} catch (error) {
 		console.log("No se conectó")
 	}

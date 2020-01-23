@@ -1,6 +1,6 @@
 export class GenericController {
 
-	constructor(private lista: any[]) {
+	constructor(private model: any) {
 		this.getAll = this.getAll.bind(this)
 		this.getOne = this.getOne.bind(this)
 		this.insert = this.insert.bind(this)
@@ -8,25 +8,33 @@ export class GenericController {
 		this.delete = this.delete.bind(this)
 	}
 
-	getAll(req, res) {
-		res.json(this.lista)
+	async getAll(req, res) {
+		const list = await this.model.find()
+
+		res.json(list)
 	}
 
-	getOne(req, res) {
-		const user = { username: "user" + req.params.id }
-
+	async getOne(req, res) {
+		const user = await this.model.findOne({ _id: req.params.id })
 		res.json(user)
 	}
 
-	insert(req, res) {
-		res.send("Registro insertado")
+	async insert(req, res) {
+		const body = req.body
+		const user = new this.model(body)
+		await user.save()
+
+		res.send("User insertado")
 	}
 
-	update(req, res) {
-		res.send("Registro actualizado")
+	async update(req, res) {
+		const doc = await this.model.findOneAndUpdate({ _id: req.params.id }, req.body)
+
+		res.send("Document updated")
 	}
 
-	delete(req, res) {
-		res.send("Registro eliminado")
+	async delete(req, res) {
+		await this.model.findOneAndRemove({ _id: req.params.id })
+		res.send("Documentd deleted")
 	}
 }

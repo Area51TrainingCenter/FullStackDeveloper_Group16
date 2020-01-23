@@ -13,6 +13,7 @@ const initializeDatabase = async () => {
 			useUnifiedTopology: true
 		})
 		mongoose.connection.on("connected", () => {
+			require("../models/usuario.model")
 			resolve()
 		})
 		mongoose.connection.on("error", error => {

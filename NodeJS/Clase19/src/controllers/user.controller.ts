@@ -1,19 +1,9 @@
 import { GenericController } from "./generic.controller";
+import { UsuarioModel } from '../models';
 
 class Controller extends GenericController {
 	constructor() {
-		super([
-			{ username: "user01" },
-			{ username: "user02" }
-		])
-	}
-
-	getAll(req, res) {
-		res.send("Método sobreescrito")
-	}
-
-	login(req, res) {
-		res.send("Usuario logueado")
+		super(UsuarioModel)
 	}
 }
 

@@ -5,7 +5,6 @@ const route = express.Router()
 const controller = new UserController()
 
 route.get("/", controller.getAll)
-route.get("/login", controller.login)
 route.get("/:id", controller.getOne)
 route.post("/", controller.insert)
 route.put("/:id", controller.update)
