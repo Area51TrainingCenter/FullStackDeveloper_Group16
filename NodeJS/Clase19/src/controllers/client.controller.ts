@@ -1,11 +1,9 @@
 import { GenericController } from './generic.controller';
+import { ClienteModel } from '../models';
 class Controller extends GenericController {
 
 	constructor() {
-		super([
-			{ clientname: "client01" },
-			{ clientname: "client02" }
-		])
+		super(ClienteModel)
 	}
 
 }
