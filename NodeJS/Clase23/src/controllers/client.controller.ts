@@ -6,6 +6,12 @@ class Controller extends GenericController {
 		super(ClienteModel)
 	}
 
+	async getListOrders(req, res) {
+		const results = await ClienteModel.listadoOrdenes()
+
+		res.json(results)
+	}
+
 }
 
 export default Controller

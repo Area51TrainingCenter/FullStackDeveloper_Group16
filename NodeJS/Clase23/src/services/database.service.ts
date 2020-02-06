@@ -15,6 +15,7 @@ const initializeDatabase = async () => {
 		mongoose.connection.on("connected", () => {
 			require("../models/usuario.model")
 			require("../models/cliente.model")
+			require("../models/orden.model")
 
 			resolve()
 		})

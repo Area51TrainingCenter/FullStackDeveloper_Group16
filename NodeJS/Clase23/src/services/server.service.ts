@@ -1,6 +1,6 @@
 import * as http from "http"
 import * as express from "express"
-import { userRoute, clientRoute } from '../routes';
+import { userRoute, clientRoute, orderRoute } from '../routes';
 import * as bodyParser from "body-parser"
 import * as path from "path"
 
@@ -21,6 +21,7 @@ const initializeServer = () => {
 
 		app.use("/users", userRoute)
 		app.use("/clients", clientRoute)
+		app.use("/orders", orderRoute)
 
 		app.use("**", (req, res, next) => {
 			// res.status(404).send("Path not found")

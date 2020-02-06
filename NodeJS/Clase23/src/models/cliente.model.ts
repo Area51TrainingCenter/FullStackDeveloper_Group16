@@ -1,4 +1,4 @@
-import * as mongoose from "mongoose"
+const mongoose = require("mongoose")
 
 const schema = new mongoose.Schema({
 	name: {
@@ -29,6 +29,31 @@ const schema = new mongoose.Schema({
 		required: true
 	}
 })
+
+schema.statics.listadoOrdenes = function () {
+	return this.aggregate([
+		{
+			$lookup: {
+				from: "ordenes",
+				localField: "_id",
+				foreignField: "client",
+				as: "detalles"
+			}
+		},
+		{
+			$project: { password: 0, "detalles.client": 0 }
+		},
+		{
+			$sort: { email: 1 }
+		},
+		{
+			$limit: 2
+		},
+		{
+			$skip: 1
+		}
+	])
+}
 
 const model = mongoose.model("Clientes", schema)
 
