@@ -1,8 +1,65 @@
 import * as multer from "multer"
 import * as jimp from "jimp"
 import { IError } from "./errors.handler"
+import { STORAGE } from "../enums/storage.enum"
+import { ParametersUpload } from "../interfaces/parameters-upload.interface"
+import { TYPE } from "../enums/type.enum"
 
 const filesHandler = {
+    upload: (parametros: ParametersUpload) => {
+        let opciones, middleware
+
+        switch (parametros.storage) {
+            case STORAGE.DISK:
+                const opcionesStorage = {
+                    destination(req, file, cb) {
+                        cb(null, "./public/avatar")
+                    },
+                    filename(req, file, cb) {
+                        req.body.foto = file.originalname
+                        cb(null, file.originalname)
+                    }
+                }
+
+                opciones = {
+                    storage: multer.diskStorage(opcionesStorage)
+                }
+
+                break;
+            default:
+                opciones = {
+                    storage: multer.memoryStorage(),
+                    fileFilter: (req, file, cb) => {
+                        const esFoto = file.mimetype.startsWith("image/")
+
+                        if (esFoto) return cb(null, true)
+
+                        const error: IError = new Error("No es una imagen")
+                        error.status = 500
+
+
+                        cb.next(error, true)
+                    }
+                }
+                break;
+        }
+
+        switch (parametros.type) {
+            case TYPE.SINGLE:
+                middleware = multer(opciones).single(parametros.fields)
+                break;
+            case TYPE.FIELDS:
+                middleware = multer(opciones).fields(parametros.fields)
+                break;
+            case TYPE.ARRAY:
+                middleware = multer(opciones).array(parametros.fields)
+                break;
+        }
+
+        return middleware
+    },
+
+
     uploadOneDisk: () => {
         const opcionesStorage = {
             destination(req, file, cb) {
